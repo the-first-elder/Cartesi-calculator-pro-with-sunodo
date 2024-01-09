@@ -20,7 +20,6 @@ The subsequent commands will help install the Cartesi Calculator Pro.
 
 ```javascript
     git clone https://github.com/the-first-elder/Cartesi-calculator-pro-with-sunodo.git
-    cd cartesiCalculatorPro
     sunodo build
     sunodo run
 ```
