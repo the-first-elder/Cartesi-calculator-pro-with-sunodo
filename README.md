@@ -1,6 +1,6 @@
 ## Cartesi Calculator Pro
 
-This repository contains the source code for the Cartesi Calculator Pro Max, a powerful tool for performing complex calculations. This application made use of [MathJS](https://mathjs.org/docs/getting_started.html) to solve complex algorithms.
+This repository contains the source code for the Cartesi Calculator Pro, a powerful tool for performing complex calculations. This application made use of [MathJS](https://mathjs.org/docs/getting_started.html) to solve complex algorithms.
 
 ## Installation
 
