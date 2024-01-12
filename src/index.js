@@ -19,20 +19,31 @@ console.log("HTTP rollup_server url is " + rollup_server);
 async function handle_advance(data) {
   console.log("Received advance request data " + JSON.stringify(data));
   const payload = data["payload"];
+  let advance_req;
   try {
     const payloadStr = ethers.toUtf8String(payload);
     const solvedCalc = math.evaluate(payloadStr);
     console.log(`Adding notice "${solvedCalc}"`);
+    advance_req = await fetch(rollup_server + '/notice', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ payload })
+    });
   } catch (e) {
     console.log(`Adding notice with binary value "${payload}"`);
+    advance_req = await fetch(rollup_server + '/report', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ payload })
+    });
+    return "reject";
+
   }
-  const advance_req = await fetch(rollup_server + '/notice', {
-    method: 'POST',
-    headers: {
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({ payload })
-  });
+
   const json = await advance_req.json();
   console.log("Received notice status " + advance_req.status + " with body " + JSON.stringify(json));
   return "accept";
